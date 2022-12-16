@@ -1,5 +1,7 @@
 # Reaktor pre-assignment 2023
 
+![reaktor-trainee](https://user-images.githubusercontent.com/17680161/208032439-7ddd0545-a369-4ffe-bded-0fab8760d206.jpg)
+
 Here is my solution for pre-assignment. The application was built using:
 
 - Backend: [Golang](https://github.com/golang/go), [Go Fiber](https://github.com/gofiber/fiber)
