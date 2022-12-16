@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:focal
+    container_name: mongodb
+    restart: always
+    env_file:
+      - ./mongodb/.env
+    expose:
+      - 27017
+    volumes:
+      - mongovol:/data/db
+
+  birdnest-api:
+    image: birdnest-api
+    container_name: birdnest-api
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    env_file:
+      - ./back/.env
+    expose:
+      - 3001
+    restart: always
+
+  birdnest-front:
+    image: birdnest-front
+    container_name: birdnest-front
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    expose:
+      - 3000
+
+  crontasks:
+    image: crontasks
+    container_name: crontasks
+    build:
+      context: ./cron-tasks
+      dockerfile: Dockerfile
+
+  nginx-proxy:
+    image: nginx-proxy
+    container_name: nginx-proxy
+    build:
+      context: ./nginx-proxy
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+      - 3001:3001
+    restart: always
+
+volumes:
+  mongovol:

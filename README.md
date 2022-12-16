@@ -7,22 +7,13 @@ Here is my solution for pre-assignment. The application was built using:
 - Database: [MongoDB](https://www.mongodb.com/home)
 - DevOps: [Docker](https://www.docker.com/), [NGINX](https://www.nginx.com/), Ubuntu VPS
 
-### What are missings if running application in the local machine?
-
-- Cron task to fetch violation drone every 2 seconds
-- Cron task to save violation to MongoDB every 10 minutes
-- MongoDB database
-
 ### Prerequisites
 
 Prepare your machine has installed:
 
-- Golang
-- [Air](https://github.com/cosmtrek/air)
-- Node JS & NPM
-- PNPM
+- Docker & Docker Compose
 
-Edit the `.env` file for frontend and backend to the following format:
+You will need to create new directory named `mongodb`. Then, it is necessary to creating `.env` file for frontend, backend, and database to the following format:
 
 ```text
 // front/.env
@@ -41,21 +32,26 @@ DRONES_API=https://assignments.reaktor.com/birdnest/drones
 PILOT_API=https://assignments.reaktor.com/birdnest/pilots
 ```
 
+```text
+// mongodb/.env
+
+MONGO_INITDB_ROOT_USERNAME=
+MONGO_INITDB_ROOT_PASSWORD=
+MONGO_INITDB_DATABASE=
+```
+
 ### Run the application
 
-You can run the backend by go the the `back` directory and use these commands:
+You can run the application using the script `run-prod`. However, running on the local machine will get `CORS`
 
 ```bash
-go mod download
-air run
+sh ./run-prod.sh
 
 ```
 
-The frontend can be run using these commands:
+To clean the production container, You can use the script `clean-prod`
 
 ```bash
-pnpm install
-pnpm run build
-node build
+sh ./clean-prod.sh
 
 ```
