@@ -44,14 +44,14 @@ MONGO_INITDB_DATABASE=
 
 ### Run the application
 
-You can run the application using the script `run-prod`. However, running on the local machine will get `CORS`
+You can run the application using the script `run-prod`.
 
 ```bash
 sh ./run-prod.sh
 
 ```
 
-To clean the production container, You can use the script `clean-prod`
+To clean the production container, You can use the script `clean-prod`.
 
 ```bash
 sh ./clean-prod.sh
